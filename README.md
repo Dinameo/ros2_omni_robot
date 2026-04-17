@@ -1,34 +1,224 @@
-# Lưu ý terminal cd <path to workspace>
-1. Đổi link trong file start.sh, stop.sh (biến LINK)
+# ROS 2 Omni Navigation Project
 
-2. Đổi DELAY nếu cần thời gian dài/ngắn hơn (Tăng nếu map full, giảm nếu map aws)
+Du an mo phong robot omni trong Gazebo Harmonic va dieu huong bang Nav2 trong ban do benh vien.
 
-3. Đổi link trong file nav2_simple_navigation/config/nav2_params.yaml, tìm dòng tương tự sau: 
-default_nav_to_pose_bt_xml: "/home/nhan/Documents/ros/project/src/nav2_simple_navigation/behavior_tree/navigate_smart.xml"
+README nay viet theo trang thai repo hien tai (file launch dung la `hospital_gazebo_control.launch.py`).
 
-4. Đổi link trong file robot_omni/urdf/omni_base.urdf, tìm dòng tương tự sau: 
-<parameters>/home/nhan/Documents/ros/project/src/robot_omni/config/configuration.yaml</parameters>
+## 1. Tong quan
 
-5. export lại file robot_omni/models bằng cách gõ lệnh sau trong terminal:
-nano ~/.bashrc
-paste đoạn này vào cuối file
-export GZ_SIM_RESOURCE_PATH=$GZ_SIM_RESOURCE_PATH:<path to your workspace>/src/robot_omni/models
-Ctrl + O -> Ctrl + X -> Enter
+Project gom 2 package chinh:
 
-6. Đổi map trong robot_omni/launch/hopistal_gazebo_control.launch.py nếu cần, tìm ddòng tương tự sau:
-world_file = os.path.join(pkg, 'worlds', 'hospital_full.world')
-chọn lại 'hospital_aws.world' hoặc 'hospital_full.world'
+- `src/robot_omni`: mo ta robot, world Gazebo, bridge ROS <-> Gazebo, ros2_control.
+- `src/nav2_simple_navigation`: map, tham so Nav2, Behavior Tree, script di chuyen theo room/waypoint.
 
-7. gõ trên terminal:
-sudo chmod +x *.sh
-./start.sh -> bắt đầu chạy
-./stop.sh -> để dừng
+Luong chay tong quat:
 
-Cách chạy goal:
-Cách 1. Trong rviz2 chọn công cụ "Publish Point", click vào điểm bất kỳ để robot đến
+1. Khoi dong Gazebo + spawn robot (`robot_omni`).
+2. Khoi dong Nav2 stack + RViz (`nav2_simple_navigation`).
+3. Gui goal bang RViz hoac bang script (ten room trong `rooms.yaml`).
 
-Cách 2. Gõ terminal ./go_to_room.sh <danh sách các goal>
-Ví dụ
-./go_to_room.sh room1 home
+## 2. Yeu cau moi truong
 
-# Lưu ý tên phòng được định nghĩa trong: nav2_simple_navigation/config/rooms.yaml
+- Ubuntu Linux.
+- ROS 2 (khuyen nghi ban tuong thich voi workspace hien tai).
+- Gazebo Harmonic + `ros_gz` bridge.
+- Da cai cac package Nav2, `robot_localization`, `twist_stamper`, `slam_toolbox`.
+- `colcon`.
+
+Neu chua cap quyen script:
+
+```bash
+export WORKSPACE=~/Documents/ros/project
+cd "$WORKSPACE"
+chmod +x *.sh
+```
+
+Nen build tong workspace it nhat 1 lan truoc khi chay nhanh:
+
+```bash
+export WORKSPACE=~/Documents/ros/project
+cd "$WORKSPACE"
+colcon build --symlink-install
+```
+
+## 3. Cau truc thu muc nhanh
+
+```text
+project/
+	start.sh, stop.sh
+	go_to_rooms.sh, go_to_rooms_optimized.sh
+	move.sh
+	src/
+		robot_omni/
+			launch/hospital_gazebo_control.launch.py
+			config/configuration.yaml
+			config/bridge_config.yaml
+			worlds/
+			urdf/omni_base.urdf
+		nav2_simple_navigation/
+			launch/nav2_control.launch.py
+			config/nav2_params.yaml
+			config/hospital_map.yaml
+			config/rooms.yaml
+			behavior_tree/navigate_smart.xml
+```
+
+## 4. Chay nhanh (khuyen nghi)
+
+### Cach nhanh nhat
+
+```bash
+export WORKSPACE=~/Documents/ros/project
+cd "$WORKSPACE"
+./start.sh
+```
+
+Script se:
+
+1. Build va chay Gazebo/robot.
+2. Doi theo `DELAY` trong `start.sh`.
+3. Build va chay Nav2 + RViz.
+
+Neu may yeu hoac world nang, tang `DELAY` trong `start.sh` de cac node len on dinh hon.
+
+Dung toan bo:
+
+```bash
+export WORKSPACE=~/Documents/ros/project
+cd "$WORKSPACE"
+./stop.sh
+```
+
+## 5. Gui goal dieu huong
+
+### Cach 1: Gui truc tiep trong RViz
+
+- Dung cong cu `2D Goal Pose` (hoac Publish Point tuy setup RViz).
+- Click vao diem dich trong map.
+
+### Cach 2: Di theo danh sach phong
+
+```bash
+export WORKSPACE=~/Documents/ros/project
+cd "$WORKSPACE"
+./go_to_rooms.sh room1 room2_1 room6_1 home
+```
+
+Ban toi uu thu tu phong (GA):
+
+```bash
+export WORKSPACE=~/Documents/ros/project
+cd "$WORKSPACE"
+./go_to_rooms_optimized.sh room1 room2_1 room6_1 home
+```
+
+Ten phong duoc dinh nghia tai:
+
+- `src/nav2_simple_navigation/config/rooms.yaml`
+
+## 6. Chay thu cong tung thanh phan
+
+Neu khong dung `start.sh`, co the mo nhieu terminal:
+
+1. Gazebo + robot
+
+```bash
+export WORKSPACE=~/Documents/ros/project
+cd "$WORKSPACE"
+colcon build --packages-select robot_omni
+source install/setup.bash
+ros2 launch robot_omni hospital_gazebo_control.launch.py
+```
+
+Luu y: `run_robot_omni.sh` trong repo dang goi nham ten file `hopistal_gazebo_control.launch.py` (typo). Khi chay thu cong, hay dung lenh ben tren hoac sua lai script nay.
+
+2. Nav2 + RViz
+
+```bash
+export WORKSPACE=~/Documents/ros/project
+cd "$WORKSPACE"
+colcon build --packages-select nav2_simple_navigation
+source install/setup.bash
+ros2 launch nav2_simple_navigation nav2_control.launch.py
+```
+
+3. Waypoint node (tuy chon)
+
+```bash
+export WORKSPACE=~/Documents/ros/project
+cd "$WORKSPACE"
+source install/setup.bash
+ros2 run nav2_simple_navigation waypoints
+```
+
+## 7. Tuy chinh truoc khi chay
+
+1. Kiem tra bien `LINK` trong:
+
+- `start.sh`
+- `stop.sh`
+
+2. Dieu chinh `DELAY` trong `start.sh`:
+
+- Tang neu world/map nang.
+- Giam neu may khoi dong nhanh.
+
+3. Kiem tra duong dan BT trong `nav2_params.yaml` (neu dung duong dan tuyet doi):
+
+- `src/nav2_simple_navigation/config/nav2_params.yaml`
+- Vi du: `default_nav_to_pose_bt_xml: ".../navigate_smart.xml"`
+
+4. Kiem tra duong dan file controller trong URDF:
+
+- `src/robot_omni/urdf/omni_base.urdf`
+- Vi du: `<parameters>.../src/robot_omni/config/configuration.yaml</parameters>`
+
+5. Chon world Gazebo neu can doi map mo phong:
+
+- `src/robot_omni/launch/hospital_gazebo_control.launch.py`
+- Dong can sua: `world_file = os.path.join(pkg, 'worlds', 'hospital_full.world')`
+
+6. Neu workspace cua ban khong phai `~/Documents/ros/project`, doi gia tri bien `WORKSPACE` trong cac lenh README va sua duong dan trong cac script shell:
+
+- `start.sh`
+- `stop.sh`
+- `go_to_rooms.sh`
+- `go_to_rooms_optimized.sh`
+
+## 8. Mot so script ho tro
+
+- `move.sh`: tao vat can dong trong Gazebo (wheelchair/scrubs).
+- `run_slam.sh`: chay `slam_toolbox` voi `mapper_params.yaml`.
+- `save_map.sh`: luu map ve `src/nav2_simple_navigation/config/hospital_map`.
+- `render_map.sh`: mo RViz nhanh.
+
+## 9. Loi thuong gap
+
+1. `command not found: ros2`:
+
+- Chua source ROS 2 moi truong.
+
+2. Khong spawn duoc model/mesh:
+
+- Kiem tra `GZ_SIM_RESOURCE_PATH`.
+- Kiem tra folder `src/robot_omni/models` ton tai day du.
+
+3. Nav2 khong len hoac lifecycle fail:
+
+- Dung `./stop.sh`, xoa `build install log` neu can, roi build/chay lai.
+- Kiem tra map file, TF (`map -> odom -> base_footprint`) va topic `/scan_front_raw`.
+
+4. Script chay duoc nhung robot khong di:
+
+- Kiem tra remap cmd vel trong `nav2_control.launch.py` den `/mobile_base_controller/reference`.
+- Kiem tra `mobile_base_controller` da spawn thanh cong trong launch Gazebo.
+
+## 10. Lenh don workspace (tuy chon)
+
+```bash
+export WORKSPACE=~/Documents/ros/project
+cd "$WORKSPACE"
+rm -rf build/ install/ log/
+```
+
+Sau do build/chay lai bang `./start.sh`.

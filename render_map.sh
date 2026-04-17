@@ -1,3 +1,3 @@
-cd /home/nhan/Documents/ros/project
+cd ./
 source install/setup.bash
 rviz2

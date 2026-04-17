@@ -1,4 +1,4 @@
-LINK="~/Documents/ros/project"
+LINK="./"
 DELAY=20
 echo "Running gazebo!"
 gnome-terminal --title="Run gazebo" -- bash -c "cd $LINK;colcon build --packages-select robot_omni;source install/setup.bash;ros2 launch robot_omni hospital_gazebo_control.launch.py"

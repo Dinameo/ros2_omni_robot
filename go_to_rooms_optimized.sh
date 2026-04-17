@@ -1,6 +1,6 @@
 
 ROOMS="$*"
-cd /home/nhan/Documents/ros/project
+cd ./
 source install/setup.bash
 ros2 run nav2_simple_navigation go_to_rooms_optimized \
   --ros-args -p rooms_list:="$ROOMS" \

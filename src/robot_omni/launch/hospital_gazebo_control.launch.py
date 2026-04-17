@@ -179,9 +179,9 @@ def generate_launch_description():
         set_ros_args,
         robot_state_publisher,
         gz_sim,
-        delayed_spawn,
-        delayed_bridge,
-        # bridge,
-        # spawn_robot,
+        # delayed_spawn,
+        # delayed_bridge,
+        bridge,
+        spawn_robot,
         delayed_controllers,
     ])
