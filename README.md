@@ -28,16 +28,14 @@ Luong chay tong quat:
 Neu chua cap quyen script:
 
 ```bash
-export WORKSPACE=~/Documents/ros/project
-cd "$WORKSPACE"
+cd <path_to_your_ws>
 chmod +x *.sh
 ```
 
 Nen build tong workspace it nhat 1 lan truoc khi chay nhanh:
 
 ```bash
-export WORKSPACE=~/Documents/ros/project
-cd "$WORKSPACE"
+cd <path_to_your_ws>
 colcon build --symlink-install
 ```
 
@@ -68,8 +66,7 @@ project/
 ### Cach nhanh nhat
 
 ```bash
-export WORKSPACE=~/Documents/ros/project
-cd "$WORKSPACE"
+cd <path_to_your_ws>
 ./start.sh
 ```
 
@@ -84,8 +81,7 @@ Neu may yeu hoac world nang, tang `DELAY` trong `start.sh` de cac node len on di
 Dung toan bo:
 
 ```bash
-export WORKSPACE=~/Documents/ros/project
-cd "$WORKSPACE"
+cd <path_to_your_ws>
 ./stop.sh
 ```
 
@@ -99,16 +95,14 @@ cd "$WORKSPACE"
 ### Cach 2: Di theo danh sach phong
 
 ```bash
-export WORKSPACE=~/Documents/ros/project
-cd "$WORKSPACE"
+cd <path_to_your_ws>
 ./go_to_rooms.sh room1 room2_1 room6_1 home
 ```
 
 Ban toi uu thu tu phong (GA):
 
 ```bash
-export WORKSPACE=~/Documents/ros/project
-cd "$WORKSPACE"
+cd <path_to_your_ws>
 ./go_to_rooms_optimized.sh room1 room2_1 room6_1 home
 ```
 
@@ -123,8 +117,7 @@ Neu khong dung `start.sh`, co the mo nhieu terminal:
 1. Gazebo + robot
 
 ```bash
-export WORKSPACE=~/Documents/ros/project
-cd "$WORKSPACE"
+cd <path_to_your_ws>
 colcon build --packages-select robot_omni
 source install/setup.bash
 ros2 launch robot_omni hospital_gazebo_control.launch.py
@@ -135,8 +128,7 @@ Luu y: `run_robot_omni.sh` trong repo dang goi nham ten file `hopistal_gazebo_co
 2. Nav2 + RViz
 
 ```bash
-export WORKSPACE=~/Documents/ros/project
-cd "$WORKSPACE"
+cd <path_to_your_ws>
 colcon build --packages-select nav2_simple_navigation
 source install/setup.bash
 ros2 launch nav2_simple_navigation nav2_control.launch.py
@@ -145,8 +137,7 @@ ros2 launch nav2_simple_navigation nav2_control.launch.py
 3. Waypoint node (tuy chon)
 
 ```bash
-export WORKSPACE=~/Documents/ros/project
-cd "$WORKSPACE"
+cd <path_to_your_ws>
 source install/setup.bash
 ros2 run nav2_simple_navigation waypoints
 ```
@@ -178,7 +169,7 @@ ros2 run nav2_simple_navigation waypoints
 - `src/robot_omni/launch/hospital_gazebo_control.launch.py`
 - Dong can sua: `world_file = os.path.join(pkg, 'worlds', 'hospital_full.world')`
 
-6. Neu workspace cua ban khong phai `~/Documents/ros/project`, doi gia tri bien `WORKSPACE` trong cac lenh README va sua duong dan trong cac script shell:
+6. Neu workspace cua ban khong phai `<path_to_your_ws>`, sua lai duong dan trong cac script shell:
 
 - `start.sh`
 - `stop.sh`
@@ -216,8 +207,7 @@ ros2 run nav2_simple_navigation waypoints
 ## 10. Lenh don workspace (tuy chon)
 
 ```bash
-export WORKSPACE=~/Documents/ros/project
-cd "$WORKSPACE"
+cd <path_to_your_ws>
 rm -rf build/ install/ log/
 ```
 
