@@ -167,7 +167,14 @@ ros2 run nav2_simple_navigation waypoints
 - `src/robot_omni/launch/hospital_gazebo_control.launch.py`
 - Dong can sua: `world_file = os.path.join(pkg, 'worlds', 'hospital_full.world')`
 
-6. Neu workspace cua ban khong phai `<path_to_your_ws>`, sua lai duong dan trong cac script shell:
+6. Export thu muc models de Gazebo tim thay model tuy chinh:
+
+```bash
+echo 'export GZ_SIM_RESOURCE_PATH=$GZ_SIM_RESOURCE_PATH:<path_to_your_ws>/src/robot_omni/models' >> ~/.bashrc
+source ~/.bashrc
+```
+
+7. Neu workspace cua ban khong phai `<path_to_your_ws>`, sua lai duong dan trong cac script shell:
 
 - `start.sh`
 - `stop.sh`
