@@ -2,8 +2,6 @@
 
 Dự án mô phỏng robot omni trong Gazebo Harmonic và điều hướng bằng Nav2 trong bản đồ bệnh viện.
 
-README này viết theo trạng thái repo hiện tại (file launch đúng là `hospital_gazebo_control.launch.py`).
-
 ## 1. Tổng quan
 
 Project gồm 2 package chính:
