@@ -123,8 +123,6 @@ source install/setup.bash
 ros2 launch robot_omni hospital_gazebo_control.launch.py
 ```
 
-Luu y: `run_robot_omni.sh` trong repo dang goi nham ten file `hopistal_gazebo_control.launch.py` (typo). Khi chay thu cong, hay dung lenh ben tren hoac sua lai script nay.
-
 2. Nav2 + RViz
 
 ```bash
