@@ -42,7 +42,7 @@ planner_server:
     GridBased:
       plugin: "nav2_navfn_planner::NavfnPlanner"
       tolerance: 0.5
-      use_astar: false
+      use_astar: true
 
 # -------------------------
 # Controller Server (MPPI)
@@ -66,8 +66,8 @@ controller_server:
 
     progress_checker:
       plugin: "nav2_controller::SimpleProgressChecker"
-      required_movement_radius: 0.5
-      movement_time_allowance: 10.0
+      required_movement_radius: 0.3
+      movement_time_allowance: 6.0
 
     general_goal_checker:
       stateful: True
@@ -100,7 +100,7 @@ controller_server:
       time_steps: 30 # So buoc du doan, horizon ngan hon de phan ung nhanh
       model_dt: 0.10 # thoi gian moi buoc
       batch_size: 1000 # So quy dao sample
-      vx_std: 0.6 # Noise: tang de MPPI explore du van toc tien/lui ro hon
+      vx_std: 1.5 # Noise: tang de MPPI explore du van toc tien/lui ro hon
       vy_std: 0.01 # Giu MPPI on dinh, tranh suy bien
       wz_std: 0.6 # Nois
       # Giu doi xung am/duong de robot van co the di lui.
@@ -142,7 +142,7 @@ controller_server:
       CostCritic:
         enabled: true
         cost_power: 1
-        cost_weight: 4.2
+        cost_weight: 3.5
         critical_cost: 250.0
         consider_footprint: true
 
@@ -197,7 +197,7 @@ global_costmap:
 
       global_frame: map
       robot_base_frame: base_footprint
-      footprint: "[[0.30, 0.25], [0.30, -0.25], [-0.30, -0.25], [-0.30, 0.25]]"
+      footprint: "[[0.30, 0.20], [0.30, -0.20], [-0.30, -0.20], [-0.30, 0.20]]"
       footprint_padding: 0.08
 
       update_frequency: 5.0
@@ -229,7 +229,7 @@ global_costmap:
 
       inflation_layer:
         plugin: "nav2_costmap_2d::InflationLayer"
-        inflation_radius: 0.6
+        inflation_radius: 0.43 # Tang de robot dam ra lenh lon hon khi gan obstacle, giam toc do de tranh va cham
         cost_scaling_factor: 1.5
 
 
@@ -246,7 +246,7 @@ local_costmap:
       transform_tolerance: 0.5
       global_frame: odom
       robot_base_frame: base_footprint
-      footprint: "[[0.30, 0.25], [0.30, -0.25], [-0.30, -0.25], [-0.30, 0.25]]"
+      footprint: "[[0.30, 0.20], [0.30, -0.20], [-0.30, -0.20], [-0.30, 0.20]]"
       footprint_padding: 0.0
 
 
@@ -276,14 +276,14 @@ local_costmap:
           min_obstacle_height: 0.0
           max_obstacle_height: 2.0
           inf_is_valid: true
-          observation_persistence: 0.0
+          observation_persistence: 0.5
           expected_update_rate: 0.0
       # plugins: ["inflation_layer"]
 
       inflation_layer:
         plugin: "nav2_costmap_2d::InflationLayer"
-        inflation_radius: 0.6
-        cost_scaling_factor: 1.5
+        inflation_radius: 0.43
+        cost_scaling_factor: 1.48
 
 # -------------------------
 # Recovery Server
