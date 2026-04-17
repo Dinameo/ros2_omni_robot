@@ -1,0 +1,201 @@
+rooms:
+  home:
+    frame_id: map
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    yaw: 0.0
+# Cạnh trai
+  room1:
+    frame_id: map
+    x: 16.0
+    y: 9.0
+    z: 0.0
+    yaw: 0.0
+  room2_1:
+    frame_id: map
+    x: 31
+    y: 9.7
+    z: 0.0
+    yaw: 0.0
+  room2_2:
+    frame_id: map
+    x: 27.5
+    y: 9.1
+    z: 0.0
+    yaw: 0.0
+  room2_3:
+    frame_id: map
+    x: 23.8
+    y: 9.2
+    z: 0.0
+    yaw: 0.0
+#  duoi cung
+  room3_1:
+    frame_id: map
+    x: 35.5
+    y: 8.7
+    z: 0.0
+    yaw: -1.57
+  room3_2:
+    frame_id: map
+    x: 37.6
+    y: 9.6
+    z: 0.0
+    yaw: -1.57
+  room3_3:
+    frame_id: map
+    x: 37.2
+    y: 5.1
+    z: 0.0
+    yaw: 0.0
+  room3_4:
+    frame_id: map
+    x: 37.2
+    y: 1.2
+    z: 0.0
+    yaw: 0.0
+# Canh phai
+  room4:
+    frame_id: map
+    x: 39
+    y: -8.7
+    z: 0.0
+    yaw: -3.14
+  room5_1:
+    frame_id: map
+    x: 30.5
+    y: -9.6
+    z: 0.0
+    yaw: -3.14
+  room5_2:
+    frame_id: map
+    x: 26.6
+    y: -9.2
+    z: 0.0
+    yaw: -3.14
+  room5_3:
+    frame_id: map
+    x: 22.5
+    y: -8.7
+    z: 0.0
+    yaw: -3.14
+  room6_1:
+    frame_id: map
+    x: 15.7
+    y: -8.8
+    z: 0.0
+    yaw: -3.14
+  room6_2:
+    frame_id: map
+    x: 12.9
+    y: -9.3
+    z: 0.0
+    yaw: -3.14
+  room6_3:
+    frame_id: map
+    x: 8.7
+    y: -9.0
+    z: 0.0
+    yaw: -3.14
+
+# giua
+  room7:
+    frame_id: map
+    x: 26.3
+    y: -2.7
+    z: 0.0
+    yaw: -1.57
+
+  room8:
+    frame_id: map
+    x: 28.5
+    y: 2.0
+    z: 0.0
+    yaw: -1.57
+  room9:
+    frame_id: map
+    x: 20.7
+    y: -1.3
+    z: 0.0
+    yaw: 0
+  room10:
+    frame_id: map
+    x: 20.8
+    y: 1.2
+    z: 0.0
+    yaw: 0
+  room11_1:
+    frame_id: map
+    x: 10.5
+    y: -1.3
+    z: 0.0
+    yaw: -1.57
+  room11_2:
+    frame_id: map
+    x: 13.5
+    y: -1.3
+    z: 0.0
+    yaw: -1.57
+  room12_1:
+    frame_id: map
+    x: 10.5
+    y: 1.3
+    z: 0.0
+    yaw: -1.57
+  room12_2:
+    frame_id: map
+    x: 13.5
+    y: 1.3
+    z: 0.0
+    yaw: -1.57
+
+  room13:
+    frame_id: map
+    x: 3.1
+    y: -10.5
+    z: 0.0
+    yaw: -3.14
+  room14:
+    frame_id: map
+    x: 0.04
+    y: -10.6
+    z: 0.0
+    yaw: -3.14
+  room15:
+    frame_id: map
+    x: -5.3
+    y: -8.5
+    z: 0.0
+    yaw: -3.14
+  room16:
+    frame_id: map
+    x: -9.0
+    y: -4.8
+    z: 0.0
+    yaw: -3.14
+
+  room17:
+    frame_id: map
+    x: 3.7
+    y: 10.5
+    z: 0.0
+    yaw: -3.14
+  room18:
+    frame_id: map
+    x: -1.0
+    y: 10.7
+    z: 0.0
+    yaw: -3.14
+  room19:
+    frame_id: map
+    x: -5.3
+    y: 8.5
+    z: 0.0
+    yaw: -3.14
+  room20:
+    frame_id: map
+    x: -9.0
+    y: 4.8
+    z: 0.0
+    yaw: -3.14
