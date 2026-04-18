@@ -6,93 +6,117 @@ rooms:
     z: 0.0
     yaw: 0.0
 # Cạnh trai
-  room1:
+  room6:
     frame_id: map
     x: 16.0
     y: 9.0
     z: 0.0
     yaw: 0.0
-  room2_1:
+  room5:
     frame_id: map
     x: 31
     y: 9.7
     z: 0.0
     yaw: 0.0
-  room2_2:
+  room5_1:
+    frame_id: map
+    x: 31
+    y: 9.7
+    z: 0.0
+    yaw: 0.0
+  room5_2:
     frame_id: map
     x: 27.5
     y: 9.1
     z: 0.0
     yaw: 0.0
-  room2_3:
+  room5_3:
     frame_id: map
     x: 23.8
     y: 9.2
     z: 0.0
     yaw: 0.0
 #  duoi cung
-  room3_1:
+  room4:
+      frame_id: map
+      x: 35.5
+      y: 8.7
+      z: 0.0
+      yaw: -1.57
+  room4_1:
     frame_id: map
     x: 35.5
     y: 8.7
     z: 0.0
     yaw: -1.57
-  room3_2:
+  room4_2:
     frame_id: map
     x: 37.6
     y: 9.6
     z: 0.0
     yaw: -1.57
-  room3_3:
+  room4_3:
     frame_id: map
     x: 37.2
     y: 5.1
     z: 0.0
     yaw: 0.0
-  room3_4:
+  room4_4:
     frame_id: map
     x: 37.2
     y: 1.2
     z: 0.0
     yaw: 0.0
 # Canh phai
-  room4:
+  room3:
     frame_id: map
     x: 39
     y: -8.7
     z: 0.0
     yaw: -3.14
-  room5_1:
+  room2:
     frame_id: map
     x: 30.5
     y: -9.6
     z: 0.0
     yaw: -3.14
-  room5_2:
+  room2_1:
+    frame_id: map
+    x: 30.5
+    y: -9.6
+    z: 0.0
+    yaw: -3.14
+  room2_2:
     frame_id: map
     x: 26.6
     y: -9.2
     z: 0.0
     yaw: -3.14
-  room5_3:
+  room2_3:
     frame_id: map
     x: 22.5
     y: -8.7
     z: 0.0
     yaw: -3.14
-  room6_1:
+  room1:
     frame_id: map
     x: 15.7
     y: -8.8
     z: 0.0
     yaw: -3.14
-  room6_2:
+  room1_1:
+    frame_id: map
+    x: 15.7
+    y: -8.8
+    z: 0.0
+    yaw: -3.14
+  room1_2:
     frame_id: map
     x: 12.9
     y: -9.3
     z: 0.0
     yaw: -3.14
-  room6_3:
+  room1_3:
     frame_id: map
     x: 8.7
     y: -9.0
@@ -100,7 +124,7 @@ rooms:
     yaw: -3.14
 
 # giua
-  room7:
+  room21:
     frame_id: map
     x: 26.3
     y: -2.7
@@ -168,7 +192,7 @@ rooms:
     y: -8.5
     z: 0.0
     yaw: -3.14
-  room16:
+  room7:
     frame_id: map
     x: -9.0
     y: -4.8

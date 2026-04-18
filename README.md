@@ -2,6 +2,11 @@
 
 Dự án mô phỏng robot omni trong Gazebo Harmonic và điều hướng bằng Nav2 trong bản đồ bệnh viện.
 
+## Thành viên
+
+- Lưu Tấn Phát - MSSV: 23134043
+- Nguyễn Thiện Nhân - MSSV: 23134041
+
 ## 1. Tổng quan
 
 Project gồm 2 package chính:
